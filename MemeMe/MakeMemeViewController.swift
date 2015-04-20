@@ -66,7 +66,7 @@ class MakeMemeViewController: UIViewController, UIImagePickerControllerDelegate,
         self.topTextField.delegate = self
         self.bottomTextField.delegate = self
         // And set the text field text attributes
-        let memeTextAttributes = [NSStrokeColorAttributeName : UIColor.blackColor(), NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!, NSStrokeWidthAttributeName : 2, NSForegroundColorAttributeName : UIColor.whiteColor()]
+        let memeTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor(), NSStrokeColorAttributeName: UIColor.blackColor(), NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!, NSStrokeWidthAttributeName : -2]
         self.topTextField.defaultTextAttributes = memeTextAttributes
         self.bottomTextField.defaultTextAttributes = memeTextAttributes
         // Set alignment
@@ -137,9 +137,7 @@ class MakeMemeViewController: UIViewController, UIImagePickerControllerDelegate,
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         // Render view to an image
-        //let memeView = CGRectMake(self.selectedImageView.frame.origin.x, self.selectedImageView.frame.origin.y, self.selectedImageView.frame.size.width, self.selectedImageView.frame.size.height)
         let memeFrame = self.view.frame
-        //UIGraphicsBeginImageContext(CGSizeMake(memeView.width, memeView.height))
         UIGraphicsBeginImageContext(memeFrame.size)
         self.view.drawViewHierarchyInRect(memeFrame,
             afterScreenUpdates: true)
