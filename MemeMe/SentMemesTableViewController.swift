@@ -11,6 +11,7 @@ import UIKit
 class SentMemesTableViewController: UITableViewController {
     
     var memesDataSource: [Meme]!
+    var didAppearOnce = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,10 @@ class SentMemesTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         // Reload the table view
         self.updateDataSource()
+        if self.memesDataSource.count == 0 && !didAppearOnce {
+            didAppearOnce = true
+            self.newMeme(self)
+        }
     }
     
     // MARK: - Setup
